@@ -29,7 +29,7 @@ describe('Chessboard', () => {
 
   describe('is valid when', () => {
     it('returns a string', () => {
-      expect(chessboard(2)).toBeInstanceOf(String);
+      expect(typeof chessboard(2)).toEqual('string');
     });
 
     it('is passed a number two', () => {
@@ -41,7 +41,7 @@ describe('Chessboard', () => {
 
   describe('when size of the board is "2"', () => {
     it('returns a string', () => {
-      expect(chessboard(2)).toBeInstanceOf(String);
+      expect(typeof chessboard(2)).toEqual('string');
     });
 
     it('returns a string of correct length', () => {
@@ -57,13 +57,19 @@ describe('Chessboard', () => {
 
   describe('when size of the board is a greater integer', () => {
     it('returns a string', () => {
-      expect(chessboard(131)).toBeInstanceOf(String);
+      expect(typeof chessboard(131)).toEqual('string');
     });
 
     it('returns a string of correct length', () => {
       expect(chessboard(131).length).toEqual(17_292);
     });
 
-    it.todo('contains "131" newline chars');
+    it('contains "131" newline chars', () => {
+      const newlineCharCount = chessboard(131)
+        .split('')
+        .filter((char) => char === '\n').length;
+
+      expect(newlineCharCount);
+    });
   });
 });

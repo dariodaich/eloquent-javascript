@@ -1,6 +1,5 @@
 {
   "randomize": true,
-  "reporters": ["<rootDir>/tests/reporters/baseReporter.js"],
   "rootDir": ".",
   "testMatch": ["<rootDir>/tests/**/*.js"],
   "verbose": true

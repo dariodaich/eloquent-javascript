@@ -1,9 +1,10 @@
 import {
   arrayToList,
+  listToArray,
   recursiveArrayToList,
 } from '../../src/4_dataStructures/list';
 
-describe('arrayToList', () => {
+describe('arrayToList and recursiveArrayToList', () => {
   describe('when not given an array', () => {
     describe('when given a scalar', () => {
       it('returns an empty object', () => {
@@ -64,6 +65,30 @@ describe('arrayToList', () => {
 
       expect(arrayToList([1, 2]).rest.rest).toBe(null);
       expect(recursiveArrayToList([1, 2]).rest.rest).toBe(null);
+    });
+  });
+});
+
+describe('listToArray', () => {
+  describe('when argument is not an object', () => {
+    test("that scalar returns 'false'", () => {
+      expect(listToArray(1)).toBe(false);
+    });
+
+    test("that array returns 'false'", () => {
+      expect(listToArray([1, 2, 3])).toBe(false);
+    });
+
+    test("that no argument returns 'false'", () => {
+      expect(listToArray()).toBe(false);
+    });
+  });
+
+  describe('when argument is a linked list', () => {
+    test('that it returns an array of values in a list', () => {
+      expect(listToArray({ value: 1, rest: { value: 2, rest: null } })).toEqual(
+        [1, 2]
+      );
     });
   });
 });

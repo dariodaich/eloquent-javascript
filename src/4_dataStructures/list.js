@@ -21,6 +21,24 @@ function arrayToList(array) {
   return objectsArray[0];
 }
 
+function listToArray(list) {
+  if (typeof list !== 'object' || Array.isArray(list) || list === undefined)
+    return false;
+
+  let array = [];
+  let nextList = list;
+
+  while (true) {
+    array.push(nextList.value);
+
+    nextList = nextList.rest;
+
+    if (nextList === null) break;
+  }
+
+  return array;
+}
+
 function recursiveArrayToList(array) {
   if (!Array.isArray(array)) return {};
 
@@ -45,4 +63,4 @@ function recursiveArrayToList(array) {
   return buildList(firstObject, restOfArray);
 }
 
-export { arrayToList, recursiveArrayToList };
+export { arrayToList, listToArray, recursiveArrayToList };
